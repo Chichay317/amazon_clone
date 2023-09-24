@@ -3,6 +3,8 @@ import Banner from "@/components/Banner";
 import Products from "@/components/Products";
 import { useEffect, useState } from "react";
 import { ProductProps } from "../../type";
+import { useDispatch } from "react-redux";
+import { setAllProducts } from "@/store/nextSlice";
 
 interface Props {
   productData: ProductProps;
@@ -27,6 +29,11 @@ export default function Home({ productData }: Props) {
 
     fetchData();
   }, []);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(setAllProducts({ allProducts: data }));
+  }, [data]);
 
   return (
     <main>

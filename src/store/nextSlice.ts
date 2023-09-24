@@ -80,6 +80,16 @@ export const nextSlice = createSlice({
     setAllProducts: (state, action) => {
       state.allProducts = action.payload;
     },
+
+    deleteFavorite: (state, action) => {
+      state.favoriteData = state.favoriteData.filter(
+        (item) => item._id !== action.payload
+      );
+    },
+
+    resetFavoriteData: (state) => {
+      state.favoriteData = [];
+    },
   },
 });
 
@@ -93,7 +103,7 @@ export const {
   addUser,
   removeUser,
   setAllProducts,
-  // deleteFavorite,
-  // resetFavoriteData,
+  deleteFavorite,
+  resetFavoriteData,
 } = nextSlice.actions;
 export default nextSlice.reducer;
